@@ -1,0 +1,42 @@
+-- create table
+
+
+CREATE TABLE accounts (
+user_id int PRIMARY KEY,
+firstname VARCHAR ( 50 ) NOT NULL,
+lastname VARCHAR ( 50 ) NOT NULL,
+email VARCHAR ( 255 ) UNIQUE NOT NULL
+); 
+
+CREATE TABLE Employee (
+user_id int PRIMARY KEY,
+firstname VARCHAR ( 50 ) NOT NULL,
+lastname VARCHAR ( 50 ) NOT NULL,
+email VARCHAR ( 255 ) UNIQUE NOT NULL
+); 
+
+
+insert into accounts(user_id,firstname,lastname,email) 
+VALUES('10','ashu','jagdale','ashu@gmail.com');
+
+
+--procedure
+
+
+
+--CREATE PROCEDURE add_data(id integer,firstname varchar(50),lastname varchar(50), email varchar(255) )
+CREATE PROCEDURE Add_data()
+LANGUAGE 'plpgsql'
+AS $BODY$
+DECLARE
+   Data_copy record;
+BEGIN
+    FOR Data_copy in (select * from accounts limit 10)
+    Loop
+    INSERT INTO public.Employee
+      end LOOP;  
+   
+END
+$BODY$; 
+
+call add_data()

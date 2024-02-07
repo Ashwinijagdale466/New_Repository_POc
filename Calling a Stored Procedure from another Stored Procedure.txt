@@ -1,0 +1,47 @@
+-- create table
+
+
+CREATE TABLE accounts (
+user_id integer PRIMARY KEY,
+firstname VARCHAR ( 50 ) NOT NULL,
+lastname VARCHAR ( 50 ) NOT NULL,
+email VARCHAR ( 255 ) UNIQUE NOT NULL
+); 
+
+
+--procedure
+
+
+CREATE PROCEDURE add_data(id integer,firstname varchar(50),lastname varchar(50), email varchar(255) )
+LANGUAGE 'plpgsql'
+AS $BODY$
+DECLARE
+BEGIN
+INSERT INTO accounts VALUES (id,firstname,lastname,email);
+END
+$BODY$; 
+
+
+--call procedure first into second 
+
+
+
+CREATE PROCEDURE Call_data()
+LANGUAGE 'plpgsql'
+AS $BODY$
+DECLARE
+BEGIN
+CALL add_data(1, 'Ashwini','jagdale','ashu@gmail.com');
+CALL add_data(2, 'chinmay','mane','chinmay@gmail.com'); 
+END
+$BODY$; 
+
+call Call_data();
+
+
+
+-- fetch data 
+
+
+select * from accounts
+

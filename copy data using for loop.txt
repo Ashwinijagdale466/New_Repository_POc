@@ -2,10 +2,10 @@
 
 
 CREATE TABLE accounts (
-user_id int PRIMARY KEY,
-firstname VARCHAR ( 50 ) NOT NULL,
-lastname VARCHAR ( 50 ) NOT NULL,
-email VARCHAR ( 255 ) UNIQUE NOT NULL
+A_user_id int PRIMARY KEY,
+A_firstname VARCHAR ( 50 ) NOT NULL,
+A_lastname VARCHAR ( 50 ) NOT NULL,
+A_email VARCHAR ( 255 ) UNIQUE NOT NULL
 ); 
 
 CREATE TABLE Employee (
@@ -16,7 +16,7 @@ email VARCHAR ( 255 ) UNIQUE NOT NULL
 ); 
 
 
-insert into accounts(user_id,firstname,lastname,email) 
+insert into accounts(A_user_id,A_firstname,A_lastname,A_email) 
 VALUES('10','ashu','jagdale','ashu@gmail.com');
 
 
@@ -31,12 +31,27 @@ AS $BODY$
 DECLARE
    Data_copy record;
 BEGIN
-    FOR Data_copy in (select * from accounts limit 10)
+
+
+
+    FOR Data_copy IN  select * from accounts 
     Loop
-    INSERT INTO public.Employee
-      end LOOP;  
+    INSERT INTO public.Employee(user_id,firstname,lastname,email) 
+     VALUES (Data_copy.A_user_id,Data_copy.A_firstname,Data_copy.A_lastname,Data_copy.A_email);
+                       
+                       RAISE NOTICE 'data copied into new table';
+                       
+      END LOOP;  
    
 END
 $BODY$; 
 
-call add_data()
+call add_data();
+
+Select * from Employee
+
+
+
+
+
+

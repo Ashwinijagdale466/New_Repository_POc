@@ -1,5 +1,5 @@
 -- create table
-
+-- test commit msg
 
 CREATE TABLE accounts (
 A_user_id int PRIMARY KEY,

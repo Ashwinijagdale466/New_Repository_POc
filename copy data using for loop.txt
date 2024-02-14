@@ -1,5 +1,6 @@
 -- create table
 
+--van
 
 CREATE TABLE accounts (
 A_user_id int PRIMARY KEY,

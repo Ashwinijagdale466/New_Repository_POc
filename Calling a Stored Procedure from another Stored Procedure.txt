@@ -1,5 +1,6 @@
 -- create table
 
+--feb only commit 1
 
 CREATE TABLE accounts (
 user_id integer PRIMARY KEY,
